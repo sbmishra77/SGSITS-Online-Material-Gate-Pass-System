@@ -352,3 +352,61 @@ body {
 .form-group input::placeholder {
     color: #999999;
 }
+
+.login-button {
+    width: 100%;
+    margin-top: 28px;
+    padding: 13px 16px;
+    background: #8b0000;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.login-button:hover {
+    background: #6f0000;
+}
+
+.login-button:active {
+    transform: scale(0.98);
+}
+
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-wrapper input {
+    padding-right: 48px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.login-message {
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    min-height: 20px;
+}
+
+.login-message.error {
+    color: #b00020;
+}
+
+.login-message.success {
+    color: #087f23;
+}
