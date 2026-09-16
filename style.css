@@ -1,0 +1,354 @@
+/* ==============================
+   BASIC RESET
+   ============================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+}
+
+
+/* ==============================
+   MAIN RED HEADER
+   ============================== */
+
+.app-header {
+    width: 100%;
+    height: 150px;
+
+    background: #8b0000;
+
+    display: flex;
+    align-items: stretch;
+
+    color: white;
+}
+
+
+/* ==============================
+   LOGO SECTIONS
+   ============================== */
+
+.logo-section {
+    height: 150px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* LEFT LOGO */
+
+.left-logo {
+    width: 155px;
+}
+
+
+/* RIGHT LOGO */
+
+.right-logo {
+    width: 155px;
+}
+
+
+/* ==============================
+   SGSITS LOGO
+   ============================== */
+
+.sgsits-logo {
+    width: 125px;
+    height: 125px;
+
+    object-fit: contain;
+}
+
+
+/* ==============================
+   CSC LOGO
+   ============================== */
+
+.csc-logo {
+    width: 125px;
+    height: 125px;
+
+    object-fit: contain;
+}
+
+
+/* ==============================
+   CENTER AREA
+   ============================== */
+
+.main-title {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 22px;
+}
+
+
+/* ==============================
+   SGSITS INDORE SECTION
+   ============================== */
+
+.institution-name {
+    width: 220px;
+    min-width: 220px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding-right: 22px;
+
+    border-right: 3px solid white;
+}
+
+
+/* ==============================
+   SGSITS
+   ============================== */
+
+.sgsits-text {
+    font-size: 48px;
+    font-weight: 700;
+
+    line-height: 1;
+}
+
+
+/* ==============================
+   INDORE
+   ============================== */
+
+.indore-text {
+    font-size: 17px;
+    font-weight: 700;
+
+    letter-spacing: 7px;
+
+    margin-top: 6px;
+
+    line-height: 1;
+}
+
+
+/* ==============================
+   SYSTEM TITLE
+   ============================== */
+
+.system-name {
+    padding-left: 25px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+
+/* ==============================
+   ENGLISH TITLE
+   ============================== */
+
+.english-title {
+    font-size: 30px;
+    font-weight: 600;
+
+    line-height: 1.2;
+}
+
+
+/* OM-GPS */
+
+.omgps {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+
+/* ==============================
+   HINDI TITLE
+   ============================== */
+
+.hindi-title {
+    font-size: 18px;
+
+    margin-top: 7px;
+
+    line-height: 1.2;
+}
+
+/* ==============================
+   MOBILE RESPONSIVE
+   ============================== */
+
+@media (max-width: 768px) {
+
+    .app-header {
+        height: 105px;
+    }
+
+    .logo-section {
+        height: 105px;
+    }
+
+    .left-logo,
+    .right-logo {
+        width: 90px;
+    }
+
+    .sgsits-logo {
+        width: 85px;
+        height: 85px;
+    }
+
+    .csc-logo {
+        width: 85px;
+        height: 85px;
+    }
+
+    .main-title {
+        padding: 0 10px;
+    }
+
+    .institution-name {
+        min-width: 130px;
+        padding-right: 12px;
+    }
+
+    .sgsits-text {
+        font-size: 25px;
+    }
+
+    .indore-text {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .system-name {
+        padding-left: 12px;
+    }
+
+    .english-title {
+        font-size: 16px;
+    }
+
+    .hindi-title {
+        font-size: 11px;
+        margin-top: 4px;
+    }
+}
+
+/* ==============================
+   LOGIN AREA
+   ============================== */
+
+.login-area {
+    min-height: calc(100vh - 150px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 20px;
+}
+
+
+/* ==============================
+   LOGIN CARD
+   ============================== */
+
+.login-card {
+    width: 420px;
+
+    background: white;
+
+    padding: 35px 40px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+
+    text-align: center;
+}
+
+
+/* LOGIN HEADING */
+
+.login-card h2 {
+    margin: 0;
+
+    color: #8b0000;
+
+    font-size: 30px;
+}
+
+
+/* HINDI SUBTITLE */
+
+.login-subtitle {
+    margin-top: 8px;
+    margin-bottom: 0;
+
+    color: #666;
+
+    font-size: 17px;
+}
+
+/* ==============================
+   LOGIN FORM
+   ============================== */
+
+.form-group {
+    text-align: left;
+    margin-top: 22px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid #cccccc;
+    border-radius: 7px;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #8b0000;
+
+    box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.10);
+}
+
+.form-group input::placeholder {
+    color: #999999;
+}
