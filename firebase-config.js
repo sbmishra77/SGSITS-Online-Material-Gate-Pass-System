@@ -6,6 +6,14 @@ import {
     setPersistence
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
+import {
+    getFirestore
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+
+/* =========================
+   FIREBASE CONFIGURATION
+========================= */
 
 const firebaseConfig = {
     apiKey: "AIzaSyDDxglyRNOtP7lZLZOr8tPAQqGVvOEnrAQ",
@@ -17,11 +25,34 @@ const firebaseConfig = {
 };
 
 
+/* =========================
+   INITIALIZE FIREBASE
+========================= */
+
 const app = initializeApp(firebaseConfig);
+
+
+/* =========================
+   FIREBASE AUTHENTICATION
+========================= */
 
 const auth = getAuth(app);
 
 setPersistence(auth, browserLocalPersistence);
 
 
-export { auth };
+/* =========================
+   CLOUD FIRESTORE
+========================= */
+
+const db = getFirestore(app);
+
+
+/* =========================
+   EXPORT
+========================= */
+
+export {
+    auth,
+    db
+};

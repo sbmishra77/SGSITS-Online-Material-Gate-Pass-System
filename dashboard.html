@@ -2,15 +2,22 @@
 <html lang="hi">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>OM-GPS Dashboard</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="style.css">
+
 </head>
 
+
 <body>
+
 
     <!-- =========================
          HEADER
@@ -45,12 +52,20 @@
             <div class="system-name">
 
                 <div class="english-title">
+
                     Online Material Gate Pass System
-                    <span class="omgps">(OM-GPS)</span>
+
+                    <span class="omgps">
+                        (OM-GPS)
+                    </span>
+
                 </div>
 
+
                 <div class="hindi-title">
+
                     ऑनलाइन मटेरियल गेट पास सिस्टम
+
                 </div>
 
             </div>
@@ -69,93 +84,509 @@
     </header>
 
 
+
     <!-- =========================
          DASHBOARD
     ========================== -->
 
     <main class="dashboard-area">
 
+
         <div class="dashboard-card">
 
-            <h1>
-                Welcome to OM-GPS
-            </h1>
 
-            <p>
-                SGSITS Online Material Gate Pass System
-            </p>
+            <!-- =========================
+                 WELCOME
+            ========================== -->
 
-            <p>
-                ऑनलाइन मटेरियल गेट पास सिस्टम
-            </p>
+            <div class="dashboard-welcome">
+
+                <div>
+
+                    <h1>
+                        नमस्कार! <span id="userName">Loading...</span>
+                    </h1>
+
+                    <p>
+                        SGSITS Online Material Gate Pass System
+                    </p>
+
+                    <p>
+                        ऑनलाइन मटेरियल गेट पास सिस्टम
+                    </p>
+
+                </div>
 
 
-            <!-- Logout Button -->
+                <div class="role-badge">
 
-            <button
-                type="button"
-                id="logoutButton"
-                class="logout-button">
+                    <span id="displayRole">
+                        Loading...
+                    </span>
 
-                Logout / लॉगआउट
+                </div>
 
-            </button>
+            </div>
+
+
+
+            <!-- =========================
+                 USER SUMMARY
+            ========================== -->
+
+            <div class="user-summary">
+
+                <div class="summary-item">
+
+                    <span class="summary-label">
+                        विभाग / Department
+                    </span>
+
+                    <strong id="displayDepartment">
+                        Loading...
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                    <span class="summary-label">
+                        User ID
+                    </span>
+
+                    <strong id="displayEmail">
+                        Loading...
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 MODULES
+            ========================== -->
+
+            <div class="modules-section">
+
+                <h2>
+                    System Modules
+                </h2>
+
+                <p class="modules-subtitle">
+                    सिस्टम मॉड्यूल
+                </p>
+
+
+
+                <div class="module-grid">
+
+
+                    <!-- USER MANAGEMENT -->
+
+                    <button
+                        type="button"
+                        class="module-card"
+                        id="userManagementButton">
+
+                        <div class="module-icon">
+                            👥
+                        </div>
+
+                        <div class="module-content">
+
+                            <h3>
+                                User Management
+                            </h3>
+
+                            <p>
+                                यूज़र प्रबंधन
+                            </p>
+
+                            <span>
+                                Users और Roles manage करें
+                            </span>
+
+                        </div>
+
+                    </button>
+
+
+
+                    <!-- GATE PASS -->
+
+                    <button
+                        type="button"
+                        class="module-card"
+                        id="gatePassButton">
+
+                        <div class="module-icon">
+                            🎫
+                        </div>
+
+                        <div class="module-content">
+
+                            <h3>
+                                Gate Pass Management
+                            </h3>
+
+                            <p>
+                                गेट पास प्रबंधन
+                            </p>
+
+                            <span>
+                                Material Gate Pass देखें और manage करें
+                            </span>
+
+                        </div>
+
+                    </button>
+
+
+
+                    <!-- APPROVALS -->
+
+                    <button
+                        type="button"
+                        class="module-card"
+                        id="approvalButton">
+
+                        <div class="module-icon">
+                            ✓
+                        </div>
+
+                        <div class="module-content">
+
+                            <h3>
+                                Approvals
+                            </h3>
+
+                            <p>
+                                अनुमोदन
+                            </p>
+
+                            <span>
+                                Gate Pass approvals manage करें
+                            </span>
+
+                        </div>
+
+                    </button>
+
+
+
+                    <!-- REPORTS -->
+
+                    <button
+                        type="button"
+                        class="module-card"
+                        id="reportsButton">
+
+                        <div class="module-icon">
+                            📊
+                        </div>
+
+                        <div class="module-content">
+
+                            <h3>
+                                Reports
+                            </h3>
+
+                            <p>
+                                रिपोर्ट्स
+                            </p>
+
+                            <span>
+                                Gate Pass और system reports देखें
+                            </span>
+
+                        </div>
+
+                    </button>
+
+
+
+                    <!-- MASTER DATA -->
+
+                    <button
+                        type="button"
+                        class="module-card"
+                        id="masterDataButton">
+
+                        <div class="module-icon">
+                            🗂️
+                        </div>
+
+                        <div class="module-content">
+
+                            <h3>
+                                Master Data
+                            </h3>
+
+                            <p>
+                                मास्टर डेटा
+                            </p>
+
+                            <span>
+                                Department और अन्य master data
+                            </span>
+
+                        </div>
+
+                    </button>
+
+
+
+                    <!-- SYSTEM SETTINGS -->
+
+                    <button
+                        type="button"
+                        class="module-card"
+                        id="settingsButton">
+
+                        <div class="module-icon">
+                            ⚙️
+                        </div>
+
+                        <div class="module-content">
+
+                            <h3>
+                                System Settings
+                            </h3>
+
+                            <p>
+                                सिस्टम सेटिंग्स
+                            </p>
+
+                            <span>
+                                System configuration manage करें
+                            </span>
+
+                        </div>
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 LOGOUT
+            ========================== -->
+
+            <div class="dashboard-footer">
+
+                <button
+                    type="button"
+                    id="logoutButton"
+                    class="logout-button">
+
+                    Logout / लॉगआउट
+
+                </button>
+
+            </div>
+
 
         </div>
 
     </main>
 
 
+
     <!-- =========================
-         FIREBASE AUTH
+         FIREBASE
     ========================== -->
 
     <script type="module">
 
-        import {
-            onAuthStateChanged,
-            signOut
-        } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
         import {
-            auth
+
+            onAuthStateChanged,
+            signOut
+
+        } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+
+        import {
+
+            doc,
+            getDoc
+
+        } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+
+        import {
+
+            auth,
+            db
+
         } from "./firebase-config.js";
 
 
+
         /* =========================
-           CHECK LOGIN STATUS
+           HTML ELEMENTS
         ========================== */
 
-        onAuthStateChanged(auth, (user) => {
+        const userName =
+            document.getElementById("userName");
+
+        const displayRole =
+            document.getElementById("displayRole");
+
+        const displayDepartment =
+            document.getElementById("displayDepartment");
+
+        const displayEmail =
+            document.getElementById("displayEmail");
+
+        const logoutButton =
+            document.getElementById("logoutButton");
+
+
+
+        /* =========================
+           CHECK LOGIN + LOAD PROFILE
+        ========================== */
+
+        onAuthStateChanged(auth, async (user) => {
 
             if (!user) {
 
-                window.location.href = "index.html";
+                window.location.href =
+                    "index.html";
+
+                return;
+
+            }
+
+
+            displayEmail.textContent =
+                user.email;
+
+
+            try {
+
+                const userDocRef =
+                    doc(
+                        db,
+                        "users",
+                        user.uid
+                    );
+
+
+                const userDoc =
+                    await getDoc(userDocRef);
+
+
+                if (!userDoc.exists()) {
+
+                    userName.textContent =
+                        "User";
+
+                    displayRole.textContent =
+                        "Profile नहीं मिला";
+
+                    displayDepartment.textContent =
+                        "-";
+
+                    return;
+
+                }
+
+
+                const userData =
+                    userDoc.data();
+
+
+                /* =========================
+                   NAME
+                ========================== */
+
+                userName.textContent =
+                    userData.name || "User";
+
+
+                /* =========================
+                   ROLE
+                ========================== */
+
+                let role =
+                    userData.role || "-";
+
+
+                if (role === "super_admin") {
+
+                    role =
+                        "Super Admin";
+
+                }
+
+
+                displayRole.textContent =
+                    role;
+
+
+                /* =========================
+                   DEPARTMENT
+                ========================== */
+
+                displayDepartment.textContent =
+                    userData.department || "-";
+
+
+                console.log(
+                    "Dashboard user:",
+                    userData
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Profile loading error:",
+                    error
+                );
+
+
+                userName.textContent =
+                    "User";
+
+                displayRole.textContent =
+                    "Error";
+
+                displayDepartment.textContent =
+                    "-";
 
             }
 
         });
 
 
+
         /* =========================
            LOGOUT
         ========================== */
 
-        const logoutButton =
-            document.getElementById("logoutButton");
+        logoutButton.addEventListener(
+            "click",
+            async function () {
 
+                try {
 
-        logoutButton.addEventListener("click", function () {
+                    await signOut(auth);
 
-            signOut(auth)
+                    window.location.href =
+                        "index.html";
 
-                .then(() => {
-
-                    window.location.href = "index.html";
-
-                })
-
-                .catch((error) => {
+                } catch (error) {
 
                     console.error(
                         "Logout error:",
@@ -166,9 +597,83 @@
                         "Logout नहीं हो पाया। कृपया दोबारा प्रयास करें।"
                     );
 
-                });
+                }
 
-        });
+            }
+        );
+
+
+
+        /* =========================
+           MODULE BUTTONS
+           TEMPORARILY DISABLED
+        ========================== */
+
+        document
+            .getElementById("userManagementButton")
+            .addEventListener("click", function () {
+
+                alert(
+                    "User Management module जल्द उपलब्ध होगा।"
+                );
+
+            });
+
+
+        document
+            .getElementById("gatePassButton")
+            .addEventListener("click", function () {
+
+                alert(
+                    "Gate Pass Management module जल्द उपलब्ध होगा।"
+                );
+
+            });
+
+
+        document
+            .getElementById("approvalButton")
+            .addEventListener("click", function () {
+
+                alert(
+                    "Approvals module जल्द उपलब्ध होगा।"
+                );
+
+            });
+
+
+        document
+            .getElementById("reportsButton")
+            .addEventListener("click", function () {
+
+                alert(
+                    "Reports module जल्द उपलब्ध होगा।"
+                );
+
+            });
+
+
+        document
+            .getElementById("masterDataButton")
+            .addEventListener("click", function () {
+
+                alert(
+                    "Master Data module जल्द उपलब्ध होगा।"
+                );
+
+            });
+
+
+        document
+            .getElementById("settingsButton")
+            .addEventListener("click", function () {
+
+                alert(
+                    "System Settings module जल्द उपलब्ध होगा।"
+                );
+
+            });
+
 
     </script>
 

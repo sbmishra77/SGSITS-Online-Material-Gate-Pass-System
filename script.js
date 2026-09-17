@@ -2,7 +2,15 @@ import {
     signInWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
-import { auth } from "./firebase-config.js";
+import {
+    doc,
+    getDoc
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+import {
+    auth,
+    db
+} from "./firebase-config.js";
 
 
 /* =========================
@@ -42,7 +50,7 @@ const userIdInput = document.getElementById("userId");
    LOGIN BUTTON
 ========================= */
 
-loginButton.addEventListener("click", function () {
+loginButton.addEventListener("click", async function () {
 
     const userId = userIdInput.value.trim();
     const password = passwordInput.value.trim();
@@ -99,63 +107,130 @@ loginButton.addEventListener("click", function () {
     loginButton.textContent = "Login हो रहा है...";
 
 
-    /* =========================
-       FIREBASE LOGIN
-    ========================= */
+    try {
 
-    signInWithEmailAndPassword(auth, userId, password)
+        /* =========================
+           FIREBASE AUTH LOGIN
+        ========================= */
 
-        .then((userCredential) => {
-
-            console.log(
-                "Login successful:",
-                userCredential.user.email
+        const userCredential =
+            await signInWithEmailAndPassword(
+                auth,
+                userId,
+                password
             );
 
 
-            loginMessage.textContent =
-                "Login सफल हुआ।";
-
-            loginMessage.classList.add("success");
+        const user = userCredential.user;
 
 
-            loginButton.textContent =
-                "Login Successful ✓";
+        console.log(
+            "Authentication successful:",
+            user.email
+        );
 
 
-            /* =========================
-               GO TO DASHBOARD
-            ========================= */
+        /* =========================
+           FIRESTORE USER PROFILE
+        ========================= */
 
-            setTimeout(function () {
+        const userDocRef =
+            doc(db, "users", user.uid);
 
-                window.location.href =
-                    "dashboard.html";
-
-            }, 800);
-
-        })
+        const userDoc =
+            await getDoc(userDocRef);
 
 
-        .catch((error) => {
+        /* =========================
+           CHECK USER PROFILE
+        ========================= */
 
-            console.error(
-                "Firebase login error:",
-                error.code
-            );
-
+        if (!userDoc.exists()) {
 
             loginMessage.textContent =
-                "User ID या Password गलत है।";
+                "User profile नहीं मिला। कृपया Administrator से संपर्क करें।";
 
             loginMessage.classList.add("error");
 
-
             loginButton.disabled = false;
-
             loginButton.textContent =
                 "Login / लॉगिन करें";
 
-        });
+            return;
+        }
+
+
+        /* =========================
+           GET USER DATA
+        ========================= */
+
+        const userData =
+            userDoc.data();
+
+
+        console.log(
+            "Firestore profile:",
+            userData
+        );
+
+
+        console.log(
+            "User role:",
+            userData.role
+        );
+
+
+        /* =========================
+           LOGIN SUCCESS
+        ========================= */
+
+        loginMessage.textContent =
+    "Login सफल हुआ | " +
+    userData.name +
+    " | Role: " +
+    userData.role;
+
+loginMessage.classList.add("success");
+
+        loginButton.textContent =
+            "Login Successful ✓";
+
+
+        /* =========================
+           GO TO DASHBOARD
+        ========================= */
+
+        setTimeout(function () {
+
+            window.location.href =
+                "dashboard.html";
+
+        }, 800);
+
+
+    } catch (error) {
+
+        console.error(
+            "Login / Firestore error:",
+            error
+        );
+
+
+        /* =========================
+           ERROR MESSAGE
+        ========================= */
+
+        loginMessage.textContent =
+            "User ID या Password गलत है।";
+
+        loginMessage.classList.add("error");
+
+
+        loginButton.disabled = false;
+
+        loginButton.textContent =
+            "Login / लॉगिन करें";
+
+    }
 
 });
