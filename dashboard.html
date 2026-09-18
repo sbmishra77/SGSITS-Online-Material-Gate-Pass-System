@@ -397,7 +397,13 @@
 
     </main>
 
+<!-- =========================
+     COMMON OM-GPS FOOTER
+========================== -->
 
+<div id="omgpsFooterContainer"></div>
+
+<script src="footer.js"></script>
 
     <!-- =========================
          FIREBASE
@@ -610,14 +616,13 @@
         ========================== */
 
         document
-            .getElementById("userManagementButton")
-            .addEventListener("click", function () {
+    .getElementById("userManagementButton")
+    .addEventListener("click", function () {
 
-                alert(
-                    "User Management module जल्द उपलब्ध होगा।"
-                );
+        window.location.href =
+            "user-management.html";
 
-            });
+    });
 
 
         document

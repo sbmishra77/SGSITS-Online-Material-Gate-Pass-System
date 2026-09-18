@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>OM-GPS - User Management</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="app-header">
+
+        <div class="logo-section left-logo">
+
+            <img src="assets/sgsits-logo.png"
+                 alt="SGSITS Indore Logo"
+                 class="sgsits-logo">
+
+        </div>
+
+
+        <div class="main-title">
+
+            <div class="institution-name">
+
+                <div class="sgsits-text">
+                    SGSITS
+                </div>
+
+                <div class="indore-text">
+                    INDORE
+                </div>
+
+            </div>
+
+
+            <div class="system-name">
+
+                <div class="english-title">
+
+                    Online Material Gate Pass System
+
+                    <span class="omgps">
+                        (OM-GPS)
+                    </span>
+
+                </div>
+
+
+                <div class="hindi-title">
+
+                    ऑनलाइन मटेरियल गेट पास सिस्टम
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="logo-section right-logo">
+
+            <img src="assets/csc-logo.png"
+                 alt="Campus Security Cell Logo"
+                 class="csc-logo">
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="dashboard-area">
+
+
+        <div class="dashboard-card">
+
+
+            <!-- PAGE TITLE -->
+
+            <div class="page-heading">
+
+                <h1>
+                    User Management
+                </h1>
+
+                <p>
+                    यूज़र प्रबंधन
+                </p>
+
+                <span>
+                    OM-GPS system users और roles manage करें
+                </span>
+
+            </div>
+
+
+
+            <!-- =========================
+                 ADD USER SECTION
+            ========================== -->
+
+            <section class="management-section">
+
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+                            Add New User
+                        </h2>
+
+                        <p>
+                            नया यूज़र जोड़ें
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-grid">
+
+
+                    <!-- NAME -->
+
+                    <div class="form-group">
+
+                        <label for="userName">
+                            Name / नाम
+                        </label>
+
+                        <input
+                            type="text"
+                            id="userName"
+                            placeholder="यूज़र का नाम">
+
+                    </div>
+
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="userEmail">
+                            User ID / Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="userEmail"
+                            placeholder="example@sgsits.ac.in">
+
+                    </div>
+
+
+
+                    <!-- DEPARTMENT -->
+
+                    <div class="form-group">
+
+                        <label for="userDepartment">
+                            Department / विभाग
+                        </label>
+
+                        <select id="userDepartment">
+
+                            <option value="">
+                                -- विभाग चुनें --
+                            </option>
+
+                            <option value="CSC">
+                                Campus Security Cell (CSC)
+                            </option>
+
+                            <option value="Electrical Engineering">
+                                Electrical Engineering
+                            </option>
+
+                            <option value="Mechanical Engineering">
+                                Mechanical Engineering
+                            </option>
+
+                            <option value="Computer Engineering">
+                                Computer Engineering
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- ROLE -->
+
+                    <div class="form-group">
+
+                        <label for="userRole">
+                            Role / भूमिका
+                        </label>
+
+                        <select id="userRole">
+
+                            <option value="">
+                                -- Role चुनें --
+                            </option>
+
+                            <option value="super_admin">
+                                Super Admin
+                            </option>
+
+                            <option value="hod">
+                                HOD / Department User
+                            </option>
+
+                            <option value="committee_member">
+                                Security Committee Member
+                            </option>
+
+                            <option value="guard">
+                                Gate Security / Guard
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ACTION -->
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        id="saveUserButton"
+                        class="primary-button">
+
+                        Save User / यूज़र सेव करें
+
+                    </button>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =========================
+                 EXISTING USERS
+            ========================== -->
+
+            <section class="management-section">
+
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+                            Existing Users
+                        </h2>
+
+                        <p>
+                            मौजूदा यूज़र्स
+                        </p>
+
+                    </div>
+
+
+                    <span class="user-count">
+                        2 Users
+                    </span>
+
+                </div>
+
+
+
+                <div class="table-wrapper">
+
+                    <table class="users-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Name
+                                </th>
+
+                                <th>
+                                    User ID
+                                </th>
+
+                                <th>
+                                    Role
+                                </th>
+
+                                <th>
+                                    Department
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    Dr. SB Mishra
+                                </td>
+
+                                <td>
+                                    sbmishra@sgsits.ac.in
+                                </td>
+
+                                <td>
+                                    Super Admin
+                                </td>
+
+                                <td>
+                                    CSC
+                                </td>
+
+                                <td>
+
+                                    <span class="status-active">
+                                        Active
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    Dr. Vipin Kaushik
+                                </td>
+
+                                <td>
+                                    vipink@sgsits.ac.in
+                                </td>
+
+                                <td>
+                                    Super Admin
+                                </td>
+
+                                <td>
+                                    CSC
+                                </td>
+
+                                <td>
+
+                                    <span class="status-active">
+                                        Active
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =========================
+                 BACK BUTTON
+            ========================== -->
+
+            <div class="page-footer">
+
+                <button
+                    type="button"
+                    id="backButton"
+                    class="secondary-button">
+
+                    ← Back to Dashboard
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+    <!-- =========================
+         COMMON OM-GPS FOOTER
+    ========================== -->
+
+    <div id="omgpsFooterContainer"></div>
+
+    <script src="footer.js"></script>
+
+    <!-- =========================
+         TEMPORARY UI SCRIPT
+    ========================== -->
+
+    <script>
+
+        const saveUserButton =
+            document.getElementById("saveUserButton");
+
+
+        saveUserButton.addEventListener(
+            "click",
+            function () {
+
+                alert(
+                    "User Management Firebase integration अगले step में जोड़ी जाएगी।"
+                );
+
+            }
+        );
+
+
+        const backButton =
+            document.getElementById("backButton");
+
+
+        backButton.addEventListener(
+            "click",
+            function () {
+
+                window.location.href =
+                    "dashboard.html";
+
+            }
+        );
+
+    </script>
+
+<script type="module" src="user-management.js"></script>
+</body>
+
+</html>
