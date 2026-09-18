@@ -177,76 +177,147 @@
 
 
 
-                    <!-- DEPARTMENT -->
+<!-- DEPARTMENT -->
 
-                    <div class="form-group">
+<div class="form-group">
 
-                        <label for="userDepartment">
-                            Department / विभाग
-                        </label>
+    <label for="userDepartment">
+        Department / विभाग
+    </label>
 
-                        <select id="userDepartment">
+    <div class="select-with-button">
 
-                            <option value="">
-                                -- विभाग चुनें --
-                            </option>
+        <select id="userDepartment">
 
-                            <option value="CSC">
-                                Campus Security Cell (CSC)
-                            </option>
+            <option value="">
+                -- विभाग चुनें --
+            </option>
 
-                            <option value="Electrical Engineering">
-                                Electrical Engineering
-                            </option>
+            <option value="CSC">
+                Campus Security Cell (CSC)
+            </option>
 
-                            <option value="Mechanical Engineering">
-                                Mechanical Engineering
-                            </option>
+            <option value="Electrical Engineering">
+                Electrical Engineering
+            </option>
 
-                            <option value="Computer Engineering">
-                                Computer Engineering
-                            </option>
+            <option value="Mechanical Engineering">
+                Mechanical Engineering
+            </option>
 
-                        </select>
+            <option value="Computer Engineering">
+                Computer Engineering
+            </option>
 
-                    </div>
+        </select>
+
+        <button
+            type="button"
+            id="addDepartmentButton"
+            class="add-master-button">
+
+            + Add New Department
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- =========================================
+     DESIGNATION
+========================================= -->
+
+<div class="form-group">
+
+    <label for="userDesignation">
+        Designation / पद
+    </label>
+
+    <div class="select-with-button">
+
+        <select id="userDesignation">
+
+            <option value="">
+                -- पद चुनें --
+            </option>
+
+        </select>
+
+        <button
+            type="button"
+            id="addDesignationButton"
+            class="add-master-button">
+
+            + Add New Designation
+
+        </button>
+
+    </div>
+
+</div>
 
 
+<!-- =========================================
+     SYSTEM RESPONSIBILITIES
+========================================= -->
 
-                    <!-- ROLE -->
+<div class="form-group">
 
-                    <div class="form-group">
+    <label>
+        System Responsibilities / सिस्टम जिम्मेदारियाँ
+    </label>
 
-                        <label for="userRole">
-                            Role / भूमिका
-                        </label>
+    <div class="responsibilities-box">
 
-                        <select id="userRole">
+        <label class="responsibility-option">
+            <input type="checkbox" name="userResponsibilities" value="hod">
+            <span>HOD</span>
+        </label>
 
-                            <option value="">
-                                -- Role चुनें --
-                            </option>
+        <label class="responsibility-option">
+            <input type="checkbox" name="userResponsibilities" value="section_incharge">
+            <span>Section In-charge</span>
+        </label>
 
-                            <option value="super_admin">
-                                Super Admin
-                            </option>
+        <label class="responsibility-option">
+            <input type="checkbox" name="userResponsibilities" value="csc_chairman">
+            <span>CSC Chairman</span>
+        </label>
 
-                            <option value="hod">
-                                HOD / Department User
-                            </option>
+        <label class="responsibility-option">
+            <input type="checkbox" name="userResponsibilities" value="csc_member">
+            <span>CSC Member</span>
+        </label>
 
-                            <option value="committee_member">
-                                Security Committee Member
-                            </option>
+        <label class="responsibility-option">
+            <input type="checkbox" name="userResponsibilities" value="registrar">
+            <span>Registrar</span>
+        </label>
 
-                            <option value="guard">
-                                Gate Security / Guard
-                            </option>
+        <label class="responsibility-option">
+            <input type="checkbox" name="userResponsibilities" value="dean">
+            <span>Dean</span>
+        </label>
 
-                        </select>
+        <label class="responsibility-option">
+            <input type="checkbox" name="userResponsibilities" value="director">
+            <span>Director</span>
+        </label>
 
-                    </div>
+        <label class="responsibility-option">
+            <input type="checkbox" name="userResponsibilities" value="warden">
+            <span>Warden</span>
+        </label>
 
+        <label class="responsibility-option">
+            <input type="checkbox" name="userResponsibilities" value="guard">
+            <span>Gate Security / Guard</span>
+        </label>
+
+    </div>
+
+</div>
 
                 </div>
 
@@ -426,6 +497,88 @@
         </div>
 
     </main>
+
+<!-- =========================
+     ADD DEPARTMENT MODAL
+========================== -->
+
+<div
+    id="departmentModal"
+    class="modal-overlay"
+    style="display: none;"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <div>
+                <h2>
+                    Add New Department
+                </h2>
+
+                <p>
+                    नया विभाग जोड़ें
+                </p>
+            </div>
+
+            <button
+                type="button"
+                id="closeDepartmentModal"
+                class="modal-close-button">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div class="modal-body">
+
+            <div class="form-group">
+
+                <label for="newDepartmentName">
+                    Department Name / विभाग का नाम
+                </label>
+
+                <input
+                    type="text"
+                    id="newDepartmentName"
+                    placeholder="विभाग का नाम दर्ज करें"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                id="cancelDepartmentButton"
+                class="secondary-button">
+
+                Cancel / रद्द करें
+
+            </button>
+
+
+            <button
+                type="button"
+                id="saveDepartmentButton"
+                class="primary-button">
+
+                Save Department / विभाग सेव करें
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
     <!-- =========================
          COMMON OM-GPS FOOTER
