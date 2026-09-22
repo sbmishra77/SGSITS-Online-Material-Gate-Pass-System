@@ -47,13 +47,25 @@ setPersistence(auth, browserLocalPersistence);
 
 const db = getFirestore(app);
 
+// =========================================
+// SECONDARY AUTH FOR USER CREATION
+// =========================================
+
+const userCreationApp =
+    initializeApp(
+        firebaseConfig,
+        "userCreationApp"
+    );
+
+const userCreationAuth =
+    getAuth(userCreationApp);
 
 /* =========================
    EXPORT
 ========================= */
-
 export {
     auth,
     db,
-    firebaseConfig
+    firebaseConfig,
+    userCreationAuth
 };

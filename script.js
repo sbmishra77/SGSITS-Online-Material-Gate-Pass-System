@@ -1,5 +1,6 @@
 import {
-    signInWithEmailAndPassword
+    signInWithEmailAndPassword,
+    signOut
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
 import {
@@ -179,6 +180,27 @@ loginButton.addEventListener("click", async function () {
             userData.role
         );
 
+
+        /* =========================
+   CHECK ACTIVE STATUS
+========================= */
+
+if (userData.active !== true) {
+
+    await signOut(auth);
+
+    loginMessage.textContent =
+        "यह User अभी Inactive है। कृपया Administrator से संपर्क करें।";
+
+    loginMessage.classList.add("error");
+
+    loginButton.disabled = false;
+
+    loginButton.textContent =
+        "Login / लॉगिन करें";
+
+    return;
+}
 
         /* =========================
            LOGIN SUCCESS
