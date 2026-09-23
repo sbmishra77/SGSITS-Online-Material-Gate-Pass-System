@@ -1075,7 +1075,7 @@ async function loadExistingUsers() {
 
                 </td>
 
-                <td>
+<td>
 
     <button
         type="button"
@@ -1093,16 +1093,29 @@ async function loadExistingUsers() {
         Delete
     </button>
 
-    <button
-    type="button"
-    class="user-action-button deactivate-user-button"
-    data-user-id="${userDoc.id}"
->
-    Deactivate
-</button>
+    ${
+        userData.active === true
+            ? `
+                <button
+                    type="button"
+                    class="user-action-button deactivate-user-button"
+                    data-user-id="${userDoc.id}"
+                >
+                    Deactivate
+                </button>
+              `
+            : `
+                <button
+                    type="button"
+                    class="user-action-button activate-user-button"
+                    data-user-id="${userDoc.id}"
+                >
+                    Activate
+                </button>
+              `
+    }
 
 </td>
-
             `;
 
 
@@ -1520,6 +1533,99 @@ document.addEventListener(
 
             alert(
                 "User deactivate नहीं हो पाया।\n\n" +
+                "Error: " +
+                error.message
+            );
+
+        }
+
+    }
+);
+
+/* =========================================
+   ACTIVATE USER
+========================================= */
+
+document.addEventListener(
+    "click",
+    async function (event) {
+
+        if (
+            !event.target.classList.contains(
+                "activate-user-button"
+            )
+        ) {
+            return;
+        }
+
+
+        const userId =
+            event.target.getAttribute(
+                "data-user-id"
+            );
+
+
+        const row =
+            event.target.closest("tr");
+
+
+        const userName =
+            row.querySelector("td").textContent.trim();
+
+
+        const confirmActivate =
+            confirm(
+                "क्या आप इस User को फिर से Activate करना चाहते हैं?\n\n" +
+                "Name: " +
+                userName +
+                "\n\n" +
+                "User को OM-GPS में फिर से Login करने की अनुमति मिलेगी।"
+            );
+
+
+        if (!confirmActivate) {
+
+            return;
+
+        }
+
+
+        try {
+
+            await updateDoc(
+                doc(
+                    db,
+                    "users",
+                    userId
+                ),
+                {
+                    active: true,
+                    updatedAt:
+                        serverTimestamp(),
+                    updatedBy:
+                        auth.currentUser.uid
+                }
+            );
+
+
+            alert(
+                "User successfully activated."
+            );
+
+
+            await loadExistingUsers();
+
+
+        } catch (error) {
+
+            console.error(
+                "User activation error:",
+                error
+            );
+
+
+            alert(
+                "User activate नहीं हो पाया।\n\n" +
                 "Error: " +
                 error.message
             );
