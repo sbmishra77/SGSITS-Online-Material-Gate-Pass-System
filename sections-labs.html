@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Sections / Labs Management - OM-GPS</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header class="app-header">
+
+        <div class="logo-section left-logo">
+
+            <img src="assets/sgsits-logo.png"
+                 alt="SGSITS Indore Logo"
+                 class="sgsits-logo">
+
+        </div>
+
+
+        <div class="main-title">
+
+            <div class="institution-name">
+
+                <div class="sgsits-text">
+                    SGSITS
+                </div>
+
+                <div class="indore-text">
+                    INDORE
+                </div>
+
+            </div>
+
+
+            <div class="system-name">
+
+                <div class="english-title">
+
+                    Online Material Gate Pass System
+
+                    <span class="omgps">
+                        (OM-GPS)
+                    </span>
+
+                </div>
+
+                <div class="hindi-title">
+                    ऑनलाइन मटेरियल गेट पास सिस्टम
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="logo-section right-logo">
+
+            <img src="assets/csc-logo.png"
+                 alt="Campus Security Cell Logo"
+                 class="csc-logo">
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main class="dashboard-container">
+
+        <section class="dashboard-section">
+
+            <div class="section-heading">
+
+                <h1>
+                    Sections / Labs Management
+                </h1>
+
+                <p>
+                    अनुभाग / प्रयोगशाला प्रबंधन
+                </p>
+
+            </div>
+
+
+            <!-- =========================
+                 ADD SECTION / LAB
+            ========================= -->
+
+            <div class="form-card">
+
+                <h2>
+                    Add Section / Lab
+                </h2>
+
+                <p>
+                    नया अनुभाग / प्रयोगशाला जोड़ें
+                </p>
+
+
+                <div class="form-group">
+
+                    <label for="departmentSelect">
+                        Department / विभाग
+                    </label>
+
+                    <select id="departmentSelect">
+
+                        <option value="">
+                            Select Department / विभाग चुनें
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="sectionLabName">
+                        Section / Lab Name
+                    </label>
+
+                    <div class="input-with-suggestions">
+
+    <input
+        type="text"
+        id="sectionLabName"
+        placeholder="Section / Lab का नाम दर्ज करें"
+        autocomplete="off"
+    >
+
+    <div
+        id="sectionLabSuggestions"
+        class="suggestions-box">
+    </div>
+
+</div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    id="saveSectionLabButton">
+
+                    Add Section / Lab
+                    / अनुभाग / लैब जोड़ें
+
+                </button>
+
+            </div>
+
+
+            <!-- =========================
+                 EXISTING SECTIONS / LABS
+            ========================= -->
+
+            <div class="table-card">
+
+                <div class="table-heading">
+
+                    <div>
+
+                        <h2>
+                            Existing Sections / Labs
+                        </h2>
+
+                        <p>
+                            मौजूदा अनुभाग / प्रयोगशालाएँ
+                        </p>
+
+                    </div>
+
+
+                    <div class="count-box">
+
+                        Total:
+                        <span id="sectionLabCount">
+                            0
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    S.No.
+                                </th>
+
+                                <th>
+                                    Department
+                                </th>
+
+                                <th>
+                                    Section / Lab
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Actions
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="sectionsLabsTableBody">
+
+                            <!-- Firebase data will load here -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 BACK BUTTON
+            ========================= -->
+
+            <button
+                type="button"
+                class="back-button"
+                onclick="alert('NEW MASTER DATA BUTTON WORKING')"
+
+                ← Back to Master Data
+
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <div id="omgpsFooterContainer"></div>
+
+    <script src="footer.js"></script>
+    <script type="module" src="sections-labs.js"></script>
+
+</body>
+
+</html>

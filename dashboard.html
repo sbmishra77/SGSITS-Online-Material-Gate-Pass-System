@@ -311,11 +311,12 @@
                     <!-- MASTER DATA -->
 
                     <button
+    <button
     type="button"
     class="module-card"
-    id="masterDataButton"
-    onclick="window.location.href='master-data.html'">
-
+    id="masterDataButton">
+    
+    
                         <div class="module-icon">
                             🗂️
                         </div>
@@ -627,14 +628,13 @@
 
 
         document
-            .getElementById("gatePassButton")
-            .addEventListener("click", function () {
+    .getElementById("masterDataButton")
+    .addEventListener("click", function () {
 
-                alert(
-                    "Gate Pass Management module जल्द उपलब्ध होगा।"
-                );
+        window.location.href =
+            "master-data.html";
 
-            });
+    });
 
 
         document
@@ -659,17 +659,7 @@
             });
 
 
-        document
-            .getElementById("masterDataButton")
-            .addEventListener("click", function () {
-
-                alert(
-                    "Master Data module जल्द उपलब्ध होगा।"
-                );
-
-            });
-
-
+        
         document
             .getElementById("settingsButton")
             .addEventListener("click", function () {
