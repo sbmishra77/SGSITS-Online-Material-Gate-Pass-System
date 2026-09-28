@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Designations Management - OM-GPS</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <style>
+
+        /* =========================================================
+           DESIGNATIONS MANAGEMENT PAGE
+           ========================================================= */
+
+        body {
+            background:
+                linear-gradient(
+                    135deg,
+                    #f7f9fc 0%,
+                    #eef2f7 50%,
+                    #f8fafc 100%
+                );
+        }
+
+
+        .designations-container {
+
+            width: 100%;
+            max-width: 1500px;
+
+            margin: 0 auto;
+
+            padding: 28px 30px 40px;
+
+            box-sizing: border-box;
+        }
+
+
+        /* =========================================================
+           PAGE HEADING
+           ========================================================= */
+
+        .designation-heading {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: flex-start;
+
+            margin-bottom: 24px;
+
+            padding: 0 4px;
+        }
+
+
+        .designation-heading h1 {
+
+            margin: 0;
+
+            font-size: 34px;
+
+            font-weight: 800;
+
+            color: #17233d;
+        }
+
+
+        .designation-heading p {
+
+            margin: 5px 0 0;
+
+            font-size: 16px;
+
+            color: #64748b;
+        }
+
+
+        /* =========================================================
+           BREADCRUMB
+           ========================================================= */
+
+        .designation-breadcrumb {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            width: fit-content;
+
+            margin-left: auto;
+
+            margin-top: -62px;
+
+            margin-bottom: 38px;
+
+            padding: 10px 18px;
+
+            background: #eef4fb;
+
+            border: 1px solid #dbe6f2;
+
+            border-radius: 999px;
+
+            color: #334155;
+
+            font-size: 14px;
+
+            box-shadow:
+                0 3px 10px rgba(15, 23, 42, 0.05);
+        }
+
+
+        .designation-breadcrumb .home {
+
+            color: #1769d1;
+
+            font-weight: 700;
+        }
+
+
+        .designation-breadcrumb .separator {
+
+            color: #94a3b8;
+
+            font-size: 20px;
+
+            line-height: 1;
+        }
+
+
+        /* =========================================================
+           ADD DESIGNATION CARD
+           ========================================================= */
+
+        .designation-form-card {
+
+            position: relative;
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(260px, 1fr)
+                minmax(260px, 1fr)
+                auto;
+
+            gap: 22px;
+
+            align-items: end;
+
+            padding: 26px 28px 28px;
+
+            margin-bottom: 24px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff7f7 0%,
+                    #fff1f1 55%,
+                    #fff8f8 100%
+                );
+
+            border: 1px solid #f3caca;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 25px rgba(120, 20, 20, 0.08);
+        }
+
+
+        .designation-form-card h2 {
+
+            grid-column: 1 / -1;
+
+            margin: 0;
+
+            font-size: 24px;
+
+            font-weight: 800;
+
+            color: #6d0000;
+        }
+
+
+        .designation-form-card > p {
+
+            grid-column: 1 / -1;
+
+            margin: -14px 0 2px;
+
+            font-size: 14px;
+
+            color: #7c4a4a;
+        }
+
+
+        .designation-form-group {
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        .designation-form-group label {
+
+            margin-bottom: 8px;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            color: #334155;
+        }
+
+
+        .designation-form-group label::after {
+
+            content: " *";
+
+            color: #b00000;
+        }
+
+
+        .designation-form-group select,
+        .designation-form-group input {
+
+            width: 100%;
+
+            min-height: 48px;
+
+            padding: 11px 14px;
+
+            box-sizing: border-box;
+
+            background: #ffffff;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 10px;
+
+            color: #1f2937;
+
+            font-size: 14px;
+
+            font-family: inherit;
+
+            outline: none;
+        }
+
+
+        .designation-form-group select:focus,
+        .designation-form-group input:focus {
+
+            border-color: #a40000;
+
+            box-shadow:
+                0 0 0 4px rgba(164, 0, 0, 0.10);
+        }
+
+
+        /* =========================================================
+           SAVE BUTTON
+           ========================================================= */
+
+        #saveDesignationButton {
+
+            min-height: 50px;
+
+            min-width: 210px;
+
+            padding: 12px 22px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #a90000,
+                    #760000
+                );
+
+            color: #ffffff;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 5px 12px rgba(120, 0, 0, 0.25);
+        }
+
+
+        #saveDesignationButton:hover {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #c00000,
+                    #850000
+                );
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================================
+           EXISTING DESIGNATIONS CARD
+           ========================================================= */
+
+        .designation-table-card {
+
+            padding: 22px;
+
+            background: #ffffff;
+
+            border: 1px solid #dfe5ec;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 25px rgba(15, 23, 42, 0.07);
+
+            overflow: hidden;
+        }
+
+
+        .designation-table-heading {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .designation-table-heading h2 {
+
+            margin: 0;
+
+            font-size: 24px;
+
+            font-weight: 800;
+
+            color: #17233d;
+        }
+
+
+        .designation-table-heading p {
+
+            margin: 4px 0 0;
+
+            font-size: 14px;
+
+            color: #64748b;
+        }
+
+
+        /* =========================================================
+           COUNT
+           ========================================================= */
+
+        .designation-count {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            padding: 9px 17px;
+
+            border-radius: 999px;
+
+            background: #fff0f0;
+
+            border: 1px solid #ffd2d2;
+
+            color: #a00000;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================================================
+           TABLE
+           ========================================================= */
+
+        .designation-table-container {
+
+            width: 100%;
+
+            overflow-x: auto;
+
+            border-radius: 10px;
+        }
+
+
+        .designation-table {
+
+            width: 100%;
+
+            min-width: 850px;
+
+            border-collapse: separate;
+
+            border-spacing: 0;
+        }
+
+
+        .designation-table thead th {
+
+            padding: 13px 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #a80000,
+                    #780000
+                );
+
+            color: #ffffff;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            text-align: left;
+        }
+
+
+        .designation-table tbody td {
+
+            padding: 13px 14px;
+
+            border-bottom: 1px solid #e7ebf0;
+
+            color: #273244;
+
+            font-size: 14px;
+
+            vertical-align: middle;
+        }
+
+
+        .designation-table tbody tr:nth-child(even) td {
+
+            background: #fafbfd;
+        }
+
+
+        .designation-table tbody tr:hover td {
+
+            background: #fff7f7;
+        }
+
+
+        /* =========================================================
+           BACK BUTTON
+           ========================================================= */
+
+        .designation-back-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            margin-top: 22px;
+
+            padding: 12px 22px;
+
+            border: 1px solid #d5dce5;
+
+            border-radius: 10px;
+
+            background: #ffffff;
+
+            color: #334155;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 4px 10px rgba(15, 23, 42, 0.08);
+        }
+
+
+        .designation-back-button:hover {
+
+            background: #8b0000;
+
+            border-color: #8b0000;
+
+            color: #ffffff;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================================
+           MOBILE
+           ========================================================= */
+
+        @media (max-width: 700px) {
+
+            .designations-container {
+
+                padding: 18px 12px 30px;
+            }
+
+
+            .designation-heading h1 {
+
+                font-size: 26px;
+            }
+
+
+            .designation-breadcrumb {
+
+                margin-top: 0;
+
+                margin-left: 4px;
+
+                margin-bottom: 20px;
+            }
+
+
+            .designation-form-card {
+
+                display: flex;
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 15px;
+
+                padding: 20px 16px;
+            }
+
+
+            #saveDesignationButton {
+
+                width: 100%;
+            }
+
+
+            .designation-table-card {
+
+                padding: 16px 10px;
+            }
+
+
+            .designation-table-heading {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         HEADER
+         ========================================================= -->
+
+    <header class="app-header">
+
+        <div class="logo-section left-logo">
+
+            <img
+                src="assets/sgsits-logo.png"
+                alt="SGSITS Indore Logo"
+                class="sgsits-logo">
+
+        </div>
+
+
+        <div class="main-title">
+
+            <div class="institution-name">
+
+                <div class="sgsits-text">
+                    SGSITS
+                </div>
+
+                <div class="indore-text">
+                    INDORE
+                </div>
+
+            </div>
+
+
+            <div class="system-name">
+
+                <div class="english-title">
+                    Online Material Gate Pass System
+                    <span class="omgps">
+                        (OM-GPS)
+                    </span>
+                </div>
+
+                <div class="hindi-title">
+                    ऑनलाइन मटेरियल गेट पास सिस्टम
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="logo-section right-logo">
+
+            <img
+                src="assets/csc-logo.png"
+                alt="Campus Security Cell Logo"
+                class="csc-logo">
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         MAIN
+         ========================================================= -->
+
+    <main class="designations-container">
+
+        <section>
+
+
+            <!-- PAGE HEADING -->
+
+            <div class="designation-heading">
+
+                <h1>
+                    Designations Management
+                </h1>
+
+                <p>
+                    पदनाम प्रबंधन
+                </p>
+
+            </div>
+
+
+            <!-- BREADCRUMB -->
+
+            <div class="designation-breadcrumb">
+
+                <span class="home">
+                    🏠 Home
+                </span>
+
+                <span class="separator">
+                    ›
+                </span>
+
+                <span>
+                    Designations
+                </span>
+
+            </div>
+
+
+            <!-- =================================================
+                 ADD DESIGNATION
+                 ================================================= -->
+
+            <div class="designation-form-card">
+
+                <h2>
+                    Add Designation
+                </h2>
+
+                <p>
+                    नया पदनाम जोड़ें
+                </p>
+
+
+                <!-- DEPARTMENT -->
+
+                <div class="designation-form-group">
+
+                    <label>
+                        Department / विभाग
+                    </label>
+
+                    <select id="designationDepartmentSelect">
+
+                        <option value="">
+                            -- Department चुनें --
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DESIGNATION -->
+
+                <div class="designation-form-group">
+
+                    <label>
+                        Designation / पदनाम
+                    </label>
+
+                    <input
+                        type="text"
+                        id="designationName"
+                        placeholder="Designation / पदनाम दर्ज करें"
+                        autocomplete="off">
+
+                </div>
+
+
+                <!-- SAVE -->
+
+                <button
+                    type="button"
+                    id="saveDesignationButton">
+
+                    Add Designation /
+                    पदनाम जोड़ें
+
+                </button>
+
+            </div>
+
+
+            <!-- =================================================
+                 EXISTING DESIGNATIONS
+                 ================================================= -->
+
+            <div class="designation-table-card">
+
+                <div class="designation-table-heading">
+
+                    <div>
+
+                        <h2>
+                            Existing Designations
+                        </h2>
+
+                        <p>
+                            मौजूदा पदनाम
+                        </p>
+
+                    </div>
+
+
+                    <div class="designation-count">
+
+                        Total:
+                        <span id="designationCount">
+                            0
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="designation-table-container">
+
+                    <table class="designation-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    S.No.
+                                </th>
+
+                                <th>
+                                    Department
+                                </th>
+
+                                <th>
+                                    Designation
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Actions
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="designationsTableBody">
+
+                            <tr>
+
+                                <td colspan="5">
+                                    Loading...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- BACK -->
+
+            <button
+                type="button"
+                class="designation-back-button"
+                onclick="window.location.href='master-data.html'">
+
+                ← Back to Master Data
+                / मास्टर डेटा पर वापस जाएँ
+
+            </button>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <div id="omgpsFooterContainer"></div>
+
+
+    <script src="footer.js"></script>
+
+    <script
+        type="module"
+        src="designations.js">
+    </script>
+
+
+</body>
+
+</html>
