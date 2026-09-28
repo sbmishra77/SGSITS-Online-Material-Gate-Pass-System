@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        System Responsibilities Management | SGSITS OM-GPS
+    </title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
+    <header class="app-header">
+
+        <div class="logo-section left-logo">
+
+            <img
+                src="assets/sgsits-logo.png"
+                alt="SGSITS Indore Logo"
+                class="sgsits-logo"
+            >
+
+        </div>
+
+
+        <div class="main-title">
+
+            <div class="institution-name">
+
+                <div class="sgsits-text">
+                    SGSITS
+                </div>
+
+                <div class="indore-text">
+                    INDORE
+                </div>
+
+            </div>
+
+
+            <div class="system-name">
+
+                <div class="english-title">
+
+                    Online Material Gate Pass System
+
+                    <span class="omgps">
+                        (OM-GPS)
+                    </span>
+
+                </div>
+
+                <div class="hindi-title">
+                    ऑनलाइन मटेरियल गेट पास सिस्टम
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="logo-section right-logo">
+
+            <img
+                src="assets/csc-logo.png"
+                alt="Campus Security Cell Logo"
+                class="csc-logo"
+            >
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         PAGE STYLE
+         ===================================================== -->
+
+    <style>
+
+        body {
+            background:
+                linear-gradient(
+                    135deg,
+                    #f8f9fc 0%,
+                    #eef1f7 100%
+                );
+        }
+
+
+        .responsibility-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px 50px;
+        }
+
+
+        .responsibility-title {
+            text-align: center;
+            margin-bottom: 6px;
+            color: #7b1e3a;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+
+        .responsibility-subtitle {
+            text-align: center;
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 22px;
+        }
+
+
+        .responsibility-breadcrumb {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+
+        .responsibility-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 24px;
+            margin-bottom: 24px;
+
+            box-shadow:
+                0 6px 20px
+                rgba(0, 0, 0, 0.08);
+        }
+
+
+        .responsibility-card-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #7b1e3a;
+            margin-bottom: 18px;
+        }
+
+
+        .responsibility-form {
+            display: grid;
+            grid-template-columns:
+                minmax(0, 1fr)
+                auto;
+
+            gap: 15px;
+            align-items: end;
+        }
+
+
+        .responsibility-form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .responsibility-form-group label {
+            font-weight: 600;
+            margin-bottom: 7px;
+            color: #333;
+        }
+
+
+        .responsibility-form-group input {
+            width: 100%;
+            box-sizing: border-box;
+
+            padding: 12px 14px;
+
+            border:
+                1px solid #d4d8e0;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+
+        .responsibility-form-group input:focus {
+            border-color: #7b1e3a;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(123, 30, 58, 0.10);
+        }
+
+
+        .responsibility-save-button {
+            border: none;
+            border-radius: 8px;
+
+            padding: 12px 22px;
+
+            background: #7b1e3a;
+            color: #ffffff;
+
+            font-size: 15px;
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        .responsibility-save-button:hover {
+            background: #64172f;
+        }
+
+
+        .responsibility-table-card {
+            background: #ffffff;
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 6px 20px
+                rgba(0, 0, 0, 0.08);
+        }
+
+
+        .responsibility-table-header {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 22px;
+
+            border-bottom:
+                1px solid #e5e5e5;
+        }
+
+
+        .responsibility-table-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #7b1e3a;
+        }
+
+
+        .responsibility-count {
+            background: #f3d7e1;
+            color: #7b1e3a;
+
+            padding: 5px 12px;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+
+        .responsibility-table-wrapper {
+            overflow-x: auto;
+        }
+
+
+        .responsibility-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+
+        .responsibility-table th {
+            background: #7b1e3a;
+            color: #ffffff;
+
+            padding: 13px 15px;
+
+            text-align: left;
+
+            font-size: 14px;
+        }
+
+
+        .responsibility-table td {
+            padding: 13px 15px;
+
+            border-bottom:
+                1px solid #eeeeee;
+
+            font-size: 14px;
+        }
+
+
+        .responsibility-table tr:hover {
+            background: #faf7f8;
+        }
+
+
+        .responsibility-status-active {
+            color: #18864b;
+            font-weight: 700;
+        }
+
+
+        .responsibility-status-inactive {
+            color: #c62828;
+            font-weight: 700;
+        }
+
+
+        .responsibility-action-button {
+            border: none;
+            border-radius: 6px;
+
+            padding: 7px 12px;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            margin-right: 5px;
+        }
+
+
+        .edit-responsibility-button {
+            background: #1976d2;
+            color: #ffffff;
+        }
+
+
+        .deactivate-responsibility-button {
+            background: #d32f2f;
+            color: #ffffff;
+        }
+
+
+        .activate-responsibility-button {
+            background: #18864b;
+            color: #ffffff;
+        }
+
+
+        .delete-responsibility-button {
+            background: #ffffff;
+            color: #c62828;
+
+            border:
+                1px solid #c62828;
+        }
+
+
+        .responsibility-empty {
+            text-align: center;
+            padding: 30px;
+
+            color: #777;
+        }
+
+
+        .responsibility-back-wrapper {
+            text-align: center;
+            margin-top: 28px;
+        }
+
+
+        .responsibility-back-button {
+            display: inline-block;
+
+            padding: 11px 22px;
+
+            border-radius: 8px;
+
+            background: #ffffff;
+            color: #7b1e3a;
+
+            border:
+                1px solid #7b1e3a;
+
+            text-decoration: none;
+
+            font-weight: 600;
+        }
+
+
+        .responsibility-back-button:hover {
+            background: #7b1e3a;
+            color: #ffffff;
+        }
+
+
+        @media (max-width: 700px) {
+
+            .responsibility-form {
+                grid-template-columns: 1fr;
+            }
+
+            .responsibility-save-button {
+                width: 100%;
+            }
+
+            .responsibility-title {
+                font-size: 24px;
+            }
+
+        }
+
+    </style>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="responsibility-page">
+
+        <h1 class="responsibility-title">
+            System Responsibilities Management
+        </h1>
+
+        <div class="responsibility-subtitle">
+            सिस्टम जिम्मेदारियाँ प्रबंधन
+        </div>
+
+
+        <div class="responsibility-breadcrumb">
+            🏠 Home › Master Data › System Responsibilities
+        </div>
+
+
+        <!-- =================================================
+             ADD RESPONSIBILITY
+             ================================================= -->
+
+        <section class="responsibility-card">
+
+            <div class="responsibility-card-title">
+                Add System Responsibility
+            </div>
+
+
+            <div class="responsibility-form">
+
+                <div class="responsibility-form-group">
+
+                    <label for="responsibilityName">
+                        Responsibility Name /
+                        जिम्मेदारी का नाम
+                    </label>
+
+                    <input
+                        type="text"
+                        id="responsibilityName"
+                        placeholder="उदाहरण: HOD"
+                    >
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="saveResponsibilityButton"
+                    class="responsibility-save-button"
+                >
+                    Add Responsibility /
+                    जिम्मेदारी जोड़ें
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             EXISTING RESPONSIBILITIES
+             ================================================= -->
+
+        <section class="responsibility-table-card">
+
+            <div class="responsibility-table-header">
+
+                <div class="responsibility-table-title">
+                    Existing System Responsibilities
+                </div>
+
+                <div
+                    class="responsibility-count"
+                    id="responsibilityCount"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="responsibility-table-wrapper">
+
+                <table class="responsibility-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                S.No.
+                            </th>
+
+                            <th>
+                                Responsibility
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody
+                        id="responsibilitiesTableBody"
+                    >
+
+                        <tr>
+
+                            <td
+                                colspan="4"
+                                class="responsibility-empty"
+                            >
+                                Loading responsibilities...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             BACK BUTTON
+             ================================================= -->
+
+        <div class="responsibility-back-wrapper">
+
+            <a
+                href="master-data.html"
+                class="responsibility-back-button"
+            >
+                ← Back to Master Data /
+                मास्टर डेटा पर वापस जाएँ
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <div id="omgpsFooterContainer"></div>
+
+
+    <script
+        type="module"
+        src="system-responsibilities.js"
+    ></script>
+
+    <script src="footer.js"></script>
+
+</body>
+
+</html>
