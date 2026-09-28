@@ -7,6 +7,7 @@ import {
     updateDoc,
     getDoc,
     doc,
+    deleteDoc,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
@@ -221,28 +222,38 @@ async function loadSectionsLabs() {
     data-section-lab-id="${sectionDoc.id}">
     Edit
 </button>
+${
+    sectionData.active === true
 
-                        ${
-                            sectionData.active === true
+    ? `
+        <button
+            type="button"
+            class="user-action-button deactivate-section-lab-button"
+            data-section-lab-id="${sectionDoc.id}">
+            Deactivate
+        </button>
+      `
 
-                            ? `
-                                <button
-                                    type="button"
-                                    class="user-action-button">
-                                    Deactivate
-                                </button>
-                              `
+    : `
+        <button
+            type="button"
+            class="user-action-button activate-section-lab-button"
+            data-section-lab-id="${sectionDoc.id}">
+            Activate
+        </button>
+      `
+}
 
-                            : `
-                                <button
-                                    type="button"
-                                    class="user-action-button">
-                                    Activate
-                                </button>
-                              `
-                        }
+<button
+    type="button"
+    class="user-action-button delete-section-lab-button"
+    data-section-lab-id="${sectionDoc.id}">
+    Delete
+</button>
 
                     </td>
+
+                    
 
                 `;
 
@@ -733,6 +744,178 @@ document.addEventListener(
     }
 );
     
+// =========================================
+// DEACTIVATE SECTION / LAB
+// =========================================
+
+document.addEventListener(
+    "click",
+    async function (event) {
+
+        if (
+            !event.target.classList.contains(
+                "deactivate-section-lab-button"
+            )
+        ) {
+            return;
+        }
+
+        const sectionLabId =
+            event.target.dataset.sectionLabId;
+
+        try {
+
+    await updateDoc(
+        doc(
+            db,
+            "sectionsLabs",
+            sectionLabId
+        ),
+        {
+            active: false,
+            updatedAt: serverTimestamp(),
+            updatedBy: auth.currentUser.uid
+        }
+    );
+
+    alert(
+        "Section / Lab successfully deactivated."
+    );
+
+    await loadSectionsLabs();
+
+} catch (error) {
+
+    console.error(
+        "Error deactivating Section / Lab:",
+        error
+    );
+
+    alert(
+        "Section / Lab deactivate नहीं हो सका।"
+    );
+}
+
+
+
+    }
+);
+
+// =========================================
+// ACTIVATE SECTION / LAB
+// =========================================
+
+document.addEventListener(
+    "click",
+    async function (event) {
+
+        if (
+            !event.target.classList.contains(
+                "activate-section-lab-button"
+            )
+        ) {
+            return;
+        }
+
+        const sectionLabId =
+            event.target.dataset.sectionLabId;
+
+        try {
+
+            await updateDoc(
+                doc(
+                    db,
+                    "sectionsLabs",
+                    sectionLabId
+                ),
+                {
+                    active: true,
+                    updatedAt: serverTimestamp(),
+                    updatedBy: auth.currentUser.uid
+                }
+            );
+
+            alert(
+                "Section / Lab successfully activated."
+            );
+
+            await loadSectionsLabs();
+
+        } catch (error) {
+
+            console.error(
+                "Error activating Section / Lab:",
+                error
+            );
+
+            alert(
+                "Section / Lab activate नहीं हो सका।"
+            );
+        }
+
+    }
+);
+
+// =========================================
+// DELETE SECTION / LAB
+// =========================================
+
+document.addEventListener(
+    "click",
+    async function (event) {
+
+        if (
+            !event.target.classList.contains(
+                "delete-section-lab-button"
+            )
+        ) {
+            return;
+        }
+
+        const sectionLabId =
+            event.target.dataset.sectionLabId;
+
+        const userConfirmed =
+            confirm(
+                "⚠️ क्या आप इस Section / Lab को permanently delete करना चाहते हैं?\n\n"
+                + "यह action वापस नहीं किया जा सकता।"
+            );
+
+        if (!userConfirmed) {
+            return;
+        }
+
+        try {
+
+    await deleteDoc(
+        doc(
+            db,
+            "sectionsLabs",
+            sectionLabId
+        )
+    );
+
+    alert(
+        "Section / Lab successfully deleted."
+    );
+
+    await loadSectionsLabs();
+
+} catch (error) {
+
+    console.error(
+        "Error deleting Section / Lab:",
+        error
+    );
+
+    alert(
+        "Section / Lab delete नहीं हो सका।"
+    );
+}
+
+    }
+);
+
 // =========================================
 // ADD SECTION / LAB
 // =========================================
